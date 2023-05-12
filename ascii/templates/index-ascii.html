@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <title>NKT - Geo Automizing</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <link rel="stylesheet" href="/static/media/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/media/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/static/media/css/fontAwesome.css">
+    <link rel="stylesheet" href="/static/media/css/light-box.css">
+    <link rel="stylesheet" href="/static/media/css/templatemo-main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+
+    <script src="/static/media/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+  </head>
+
+<body>
+    
+    <div class="sequence" id="sequence">
+  
+        <div class="seq-preloader" id="preloader">
+          <svg width="39" height="16" viewBox="0 0 39 16" xmlns="http://www.w3.org/2000/svg" class="seq-preload-indicator"><g fill="#F96D38"><path class="seq-preload-circle seq-preload-circle-1" d="M3.999 12.012c2.209 0 3.999-1.791 3.999-3.999s-1.79-3.999-3.999-3.999-3.999 1.791-3.999 3.999 1.79 3.999 3.999 3.999z"/><path class="seq-preload-circle seq-preload-circle-2" d="M15.996 13.468c3.018 0 5.465-2.447 5.465-5.466 0-3.018-2.447-5.465-5.465-5.465-3.019 0-5.466 2.447-5.466 5.465 0 3.019 2.447 5.466 5.466 5.466z"/><path class="seq-preload-circle seq-preload-circle-3" d="M31.322 15.334c4.049 0 7.332-3.282 7.332-7.332 0-4.049-3.282-7.332-7.332-7.332s-7.332 3.283-7.332 7.332c0 4.05 3.283 7.332 7.332 7.332z"/></g></svg>
+        </div>
+        
+    </div>
+      
+    
+          <nav>
+            <div class="logo">
+                <img src="/static/media/img/logo.png" alt="" style="width: 185px;" onclick="goHome();">
+            </div>
+            <div class="mini-logo">
+                <img src="/static/media/img/logo.png" alt="" style="width: 100px;" onclick="goHome();">
+            </div>
+            <ul>
+              <li><a href="#1"><i class="fa fa-file"></i> <em>Select Files</em></a></li>
+              <li><a href="#2"><i class="fa fa-map"></i> <em>GeoTechinical Plots</em></a></li>
+              <li><a href="#3"><i class="fa fa-image"></i> <em>SBT</em></a></li>
+              <!-- <li><a href="#4"><i class="fa fa-download"></i> <em>KPs Download</em></a></li>-->
+            </ul>
+          </nav>
+          
+          <div class="slides">
+            <div class="slide" id="1">
+              <div class="content fifth-content">
+                <div class="container-fluid">
+                    <div class="col-md-12">
+                        <form enctype="multipart/form-data" method="POST" id="contact">
+                            {% csrf_token %}
+                            <div class="row">
+
+                                <div class="col-md-4">
+                                    <fieldset>
+                                        <h4 style="text-align:initial;">ASCII File in .xlsx Format</h4>
+                                        <input name="file" type="file" class="form-control" id="file" placeholder="Please Select Lab Data File in .ags" accept=".xlsx" required="" multiple="multiple">
+                                    </fieldset>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <fieldset>
+                                        <h4 style="text-align:initial;">Please Select DR In .xlsx</h4>
+                                        <input name="file1" type="file" class="form-control" id="file1" placeholder="Please Select CPT and Lab Data In .xlsx" accept=".xlsx" required="">
+                                    </fieldset>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <fieldset>
+                                        <h4 style="text-align:initial;">Please Enter value for SU</h4>
+                                        <input name="su" type="number" min="10" max="30" step="0.1" class="form-control" id="su" placeholder="Please Enter Value for SU">
+                                    </fieldset>
+                                </div>
+
+                                <!-- Text Entries -->
+                                <div class="col-md-4">
+                                    <fieldset>
+                                        <h4 style="text-align:initial;">Please Enter C0</h4>
+                                        <input name="c0" type="text" class="form-control" id="c0" placeholder="Please enter C0" >
+                                    </fieldset>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <fieldset>
+                                        <h4 style="text-align:initial;">Please enter C1</h4>
+                                        <input name="c1" type="text" class="form-control" id="c1" placeholder="Please enter C1">
+                                    </fieldset>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <fieldset>
+                                        <h4 style="text-align:initial;">Please Enter C2</h4>
+                                        <input name="c2" type="text" class="form-control" id="c2" placeholder="Please enter C2" >
+                                    </fieldset>
+                                </div>
+
+                                {% comment %} <div class="col-md-4">
+                                    <fieldset>
+                                        <h4 style="text-align:initial;">Please enter C00</h4>
+                                        <input name="c00" type="text" class="form-control" id="c00" placeholder="Please enter C00">
+                                    </fieldset>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <fieldset>
+                                        <h4 style="text-align:initial;">Please Enter C01</h4>
+                                        <input name="c01" type="text" class="form-control" id="c01" placeholder="Please enter C01" >
+                                    </fieldset>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <fieldset>
+                                        <h4 style="text-align:initial;">Please enter C02</h4>
+                                        <input name="c02" type="text" class="form-control" id="c02" placeholder="Please enter C02">
+                                    </fieldset>
+                                </div> {% endcomment %}
+
+                                <div class="col-md-4">
+                                    <fieldset>
+                                        <h4 style="text-align:initial;">Please enter Depth Level</h4>
+                                        <input name="depth_level" type="text" class="form-control" id="depth_level" placeholder="Please enter Depth Level">
+                                    </fieldset>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <fieldset>
+                                        <button type="submit" id="form-submit" name="ags" value="submit" class="btn">Submit Files</button>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!--<div class="col-md-6">
+                        <div class="row">
+                        </div>
+                    </div>-->
+                </div>
+              </div>
+            </div>
+            <div class="slide" id="2">
+              <div class="content second-content">
+                  <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                          <div class="left-content">
+                            <iframe width="100%", srcdoc="{{final}}" title="pcptsu" style="outline: none;border: 0px;height:1050px;" id="route"></iframe>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class="slide" id="3">
+                <div class="content third-content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="left-content">
+                                    <!--<iframe width="100%", title="pcptsu" style="outline: none;border: 0px;height:750px;" id="soil"></iframe>-->
+                                    <table  class="table table-striped" style="width:100%" id="example">
+                                        <thead>
+                                            <tr>
+                                                <th>Depth</th>
+                                                <th>ISBT</th>
+                                                <th>Zone</th>
+                                                <th>Location</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for dpth,sbt,zone,loc in sbtdir %}
+                                            <tr>
+                                                <td>{{dpth}}</td>
+                                                <td>{{sbt}}</td>
+                                                <td>{{zone}}</td>
+                                                <td>{{loc}}</td>
+                                            </tr>
+                                            {%endfor%}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide" id="4">
+              <div class="content third-content">
+                  <div class="container-fluid">
+                      <div class="row">
+                          <div class="col-md-12">
+                            <h3 style="text-align:initial;">You can download KPs from here</h3>
+                            <!--<a href="/download" target="_blank">Download</a>-->
+                            
+                            <a href="" class="btn" id="dwnbtn">Download</a>
+                            
+                            
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            </div>
+            
+         </div>
+   
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+      <script>window.jQuery || document.write('<script src="/static/media/js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+  
+      <script src="/static/media/js/vendor/bootstrap.min.js"></script>
+      
+      <script src="/static/media/js/datepicker.js"></script>
+      <script src="/static/media/js/plugins.js"></script>
+      <script src="/static/media/js/main.js"></script>
+      <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+      <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
+  
+      <script type="text/javascript">
+      $(document).ready(function() {
+  
+        //download_vcs();
+  
+          // navigation click actions 
+          $('.scroll-link').on('click', function(event){
+              event.preventDefault();
+              var sectionID = $(this).attr("data-id");
+              scrollToID('#' + sectionID, 750);
+          });
+          // scroll to top action
+          $('.scroll-top').on('click', function(event) {
+              event.preventDefault();
+              $('html, body').animate({scrollTop:0}, 'slow');         
+          });
+          // mobile nav toggle
+          $('#nav-toggle').on('click', function (event) {
+              event.preventDefault();
+              $('#main-nav').toggleClass("open");
+          });
+
+          $('#example').DataTable();;
+      });
+      // scroll function
+      function scrollToID(id, speed){
+          var offSet = 0;
+          var targetOffset = $(id).offset().top - offSet;
+          var mainNav = $('#main-nav');
+          $('html,body').animate({scrollTop:targetOffset}, speed);
+          if (mainNav.hasClass("open")) {
+              mainNav.css("height", "1px").removeClass("in").addClass("collapse");
+              mainNav.removeClass("open");
+          }
+      }
+      if (typeof console === "undefined") {
+          console = {
+              log: function() { }
+          };
+      }
+
+      /*function getUserData(){
+        //alert($("#vc_name").val());
+        document.getElementById("sequence").style.display ="block";
+        document.getElementById("preloader").style.display ="block";
+        $.ajax({
+            type:'POST',
+            url:'{{'getUserData/'}}',
+            data:{csrfmiddlewaretoken: '{{ csrf_token }}',
+                tab_keys: $("#table_keys").val(),
+                cp_keys: $("#cpt_keys").val(),
+                su_column: $("#su_column").val(),
+                depth_column: $("#depth_column").val(),
+                dr_column: $("#dr_column").val(),
+                vc_name: $("#vc_name").val(),
+                kp_name: $("#kp_name").val(),
+                dcc_name: $("#dcc_name").val()
+            },
+            dataType:'json',
+            success:function(response){
+                //alert("RIHEN");
+                document.getElementById("sequence").style.display ="none";
+                document.getElementById("preloader").style.display ="none";
+                console.log(response);
+                $("#route").attr('srcdoc',response['pcptsu']);
+                $("#soil").attr('srcdoc',response['html3']);
+                $("#dwnbtn").attr("href", response['dwnlodvc'])
+                //res=JSON.stringify(response);
+                //console.log(res['pcptsu']);
+            }
+        })
+      }  */    
+
+      function goHome(){
+        window.location.href = "{% url 'home' %}";
+      }
+
+      $("#su").focusout(function(){
+        if (parseFloat($("#su").val())<10 || parseFloat($("#su").val())>30 ){
+            alert("Value must be between 10 - 30");
+            $("#su").val("");
+        }
+      })
+      </script>
+</body>
+</html>
